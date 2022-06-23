@@ -1,4 +1,4 @@
-import logic.BubbleSort;
+import app.logic.BubbleSort;
 
 import java.util.Arrays;
 
