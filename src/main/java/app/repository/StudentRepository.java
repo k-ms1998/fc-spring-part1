@@ -15,7 +15,7 @@ public class StudentRepository {
 
     private final Map<String, Student> storage = new HashMap<>();
 
-//    @Cacheable(value = "getStudent")
+    @Cacheable(value = "getStudent")
     public Student getStudent(String name) {
         System.out.println("[repository] Bottleneck");
         return storage.get(name);

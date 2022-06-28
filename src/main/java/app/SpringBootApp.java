@@ -47,18 +47,24 @@ public class SpringBootApp {
         /**
          * w/o Caching:
          * [repository] Bottleneck
-         * student = app.domain.Student@83ebdc5
+         * student = jack:20
          * [repository] Bottleneck
-         * student = app.domain.Student@83ebdc5
+         * student = jack:20
          * [repository] Bottleneck
-         * student = app.domain.Student@83ebdc5
+         * student = jack:20
          *
          * w/ Caching:
          * [repository] Bottleneck
-         * student = app.domain.Student@83ebdc5
-         * student = app.domain.Student@83ebdc5
-         * student = app.domain.Student@83ebdc5
+         * student = jack:20
+         * student = jack:20
+         * student = jack:20
          */
+
+        studentService.printStudent("fred");
+        studentService.printStudent("fred");
+
+        studentService.printStudent("andreas");
+        studentService.printStudent("andreas");
 
     }
 }
