@@ -2,6 +2,7 @@ package app;
 
 import app.properties.MyProperties;
 import app.service.StudentService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -19,10 +20,16 @@ public class SpringBootApp {
 
     private final MyProperties myProperties;
     private final StudentService studentService;
+    private final String userId;
+    private final String password;
 
-    public SpringBootApp(MyProperties myProperties, StudentService studentService) {
+    public SpringBootApp(MyProperties myProperties, StudentService studentService,
+                         @Value("${userId}")String userId,
+                         @Value("${password}") String password) {
         this.myProperties = myProperties;
         this.studentService = studentService;
+        this.userId = userId;
+        this.password = password;
     }
 
     public static void main(String[] args) {
@@ -66,5 +73,11 @@ public class SpringBootApp {
         studentService.printStudent("andreas");
         studentService.printStudent("andreas");
 
+        System.out.println("============================");
+        /**
+         * Vault에서 secret/fast-campus-spring-part2 에 저장되어 있는 userId랑 password 값 출력 -> Vault에 저장된 값이 application.properties 에 저장된 값들을 덮어 씀
+         */
+        System.out.println("userId = " + userId);
+        System.out.println("password = " + password);
     }
 }
